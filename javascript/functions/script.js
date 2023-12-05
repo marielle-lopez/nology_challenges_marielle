@@ -72,3 +72,18 @@ let numOf3Pointers = Number(prompt("Enter number of 3-pointers: "));
 let totalPoints = calculateScoreTotal(numOf2Pointers, numOf3Pointers);
 
 console.log(`The total score is ${totalPoints}.`);
+
+// less than 100 challenge
+
+function lessThan100(firstNum, secondNum) {
+  if (firstNum + secondNum < 100) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let num1 = Number(prompt("Enter first number: "));
+let num2 = Number(prompt("Enter second number: "));
+
+console.log(lessThan100(num1, num2));
