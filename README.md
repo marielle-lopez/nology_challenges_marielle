@@ -1,3 +1,3 @@
 # \_nology Challenges
 
-Everything and anything related my attempts to the \_nology challenges!
+Everything and anything related to my attempts to the \_nology challenges!
