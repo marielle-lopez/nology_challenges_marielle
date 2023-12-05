@@ -53,9 +53,22 @@ function findRemainder(num1, num2) {
   return num1 % num2;
 }
 
-firstNum = Number(prompt("Enter first number: "));
-secondNum = Number(prompt("Enter second number: "));
+let firstNum = Number(prompt("Enter first number: "));
+let secondNum = Number(prompt("Enter second number: "));
 
 let remainder = findRemainder(firstNum, secondNum);
 
 console.log(`The remainder is ${remainder}.`);
+
+// basketball points
+
+function calculateScoreTotal(numOf2Pointers, numOf3Pointers) {
+  return 2 * numOf2Pointers + 3 * numOf3Pointers;
+}
+
+let numOf2Pointers = Number(prompt("Enter number of 2-pointers: "));
+let numOf3Pointers = Number(prompt("Enter number of 3-pointers: "));
+
+let totalPoints = calculateScoreTotal(numOf2Pointers, numOf3Pointers);
+
+console.log(`The total score is ${totalPoints}.`);
