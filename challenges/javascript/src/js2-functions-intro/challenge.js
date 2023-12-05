@@ -153,21 +153,25 @@ export const calculateAreaOfCircle = (radius) => {
  * @param {string} name John
  */
 export const getStudentSummary = (score, name) => {
-  if (isNaN(score) || typeof score !== "number" || typeof name !== "string") {
+  if (
+    isNaN(score) ||
+    typeof score !== "number" ||
+    typeof name !== "string" ||
+    score > 100 ||
+    score < 0
+  ) {
     return `My apologies ${name}, there's been an error in processing your grade.`;
-  } else if (score <= 100 && score >= 80) {
+  } else if (score >= 80) {
     return `Congratulations ${name}! You achieved a grade of A.`;
-  } else if (score <= 79 && score >= 70) {
+  } else if (score >= 70) {
     return `Well done ${name}! You achieved a grade of B.`;
-  } else if (score <= 69 && score >= 60) {
+  } else if (score >= 60) {
     return `Nicely done ${name}! You achieved a grade of C.`;
-  } else if (score <= 59 && score >= 50) {
+  } else if (score >= 50) {
     return `That's okay ${name}. You achieved a grade of D.`;
-  } else if (score <= 49 && score >= 40) {
+  } else if (score >= 40) {
     return `Too bad ${name}. You achieved a grade of E.`;
-  } else if (score <= 39 && score >= 0) {
-    return `Sorry ${name}. You achieved a grade of F. There's always next year.`;
   } else {
-    return `My apologies ${name}, there's been an error in processing your grade.`;
+    return `Sorry ${name}. You achieved a grade of F. There's always next year.`;
   }
 };
