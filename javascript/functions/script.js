@@ -46,3 +46,16 @@ let ageToSeconds = yearsToSeconds(userInput);
 
 console.log(`You're ${ageToDays} days old.`);
 console.log(`You're ${ageToSeconds} seconds old.`);
+
+// return the remainder from two numbers
+
+function findRemainder(num1, num2) {
+  return num1 % num2;
+}
+
+firstNum = Number(prompt("Enter first number: "));
+secondNum = Number(prompt("Enter second number: "));
+
+let remainder = findRemainder(firstNum, secondNum);
+
+console.log(`The remainder is ${remainder}.`);
