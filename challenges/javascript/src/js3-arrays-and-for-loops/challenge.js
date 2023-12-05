@@ -219,6 +219,17 @@ export const encryptString = (toEncrypt) => {
     chunks.push(toEncrypt.slice(i, i + chunkSize));
   }
 
+  // for (let i = 0; i < chunks.length; i++) {
+  //   if (chunks[i].length !== chunkSize) {
+  //     let actualChunkLength = chunks[i].length;
+  //     let remainingChunkLength = chunkSize - actualChunkLength;
+
+  //     for (let j = 0; j < remainingChunkLength; j++) {
+  //       chunks[i].push("");
+  //     }
+  //   }
+  // }
+
   for (let i = 0; i < chunks.length; i++) {
     for (let j = 0; j < chunks.length; j++) {
       if (chunks[j][i] !== undefined) {
