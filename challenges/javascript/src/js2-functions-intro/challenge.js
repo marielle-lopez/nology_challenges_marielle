@@ -120,10 +120,8 @@ export const getGrade = (score) => {
     return "D";
   } else if (score >= 40) {
     return "E";
-  } else if (score >= 0) {
-    return "F";
   } else {
-    return "Score unavailable";
+    return "F";
   }
 };
 
