@@ -108,19 +108,19 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
-  if (isNaN(score) || typeof score !== "number") {
+  if (isNaN(score) || typeof score !== "number" || score > 100 || score < 0) {
     return "Score unavailable";
-  } else if (score <= 100 && score >= 80) {
+  } else if (score >= 80) {
     return "A";
-  } else if (score <= 79 && score >= 70) {
+  } else if (score >= 70) {
     return "B";
-  } else if (score <= 69 && score >= 60) {
+  } else if (score >= 60) {
     return "C";
-  } else if (score <= 59 && score >= 50) {
+  } else if (score >= 50) {
     return "D";
-  } else if (score <= 49 && score >= 40) {
+  } else if (score >= 40) {
     return "E";
-  } else if (score <= 39 && score >= 0) {
+  } else if (score >= 0) {
     return "F";
   } else {
     return "Score unavailable";
