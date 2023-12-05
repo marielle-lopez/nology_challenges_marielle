@@ -1,3 +1,3 @@
-# Git Branches Practice
+# \_nology Challenges
 
-This is a sample repository to practise dealing with Git branches.
+Everything and anything related my attempts to the \_nology challenges!
