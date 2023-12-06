@@ -202,35 +202,23 @@ export const generateHighscores = (playersArr, scoresArr) => {
  * @return {string} "ertnyecpd"
  */
 
-// export const encryptString = (toEncrypt) => {
-//   return;
-// };
-
 export const encryptString = (toEncrypt) => {
-  if (toEncrypt.length === 3) {
+  if (toEncrypt.length <= 3) {
     return toEncrypt;
   }
 
-  let chunkSize = 3;
-  let chunks = [];
+  let chunkSize = 3; // number of letters in each chunk
+  let chunks = []; // stores chunkSize-sized letter chunks
   let encrypted = "";
 
+  // creating passed argument into chunks
   for (let i = 0; i < toEncrypt.length; i += chunkSize) {
     chunks.push(toEncrypt.slice(i, i + chunkSize));
   }
 
-  // for (let i = 0; i < chunks.length; i++) {
-  //   if (chunks[i].length !== chunkSize) {
-  //     let actualChunkLength = chunks[i].length;
-  //     let remainingChunkLength = chunkSize - actualChunkLength;
-
-  //     for (let j = 0; j < remainingChunkLength; j++) {
-  //       chunks[i].push("");
-  //     }
-  //   }
-  // }
-
-  for (let i = 0; i < chunks.length; i++) {
+  // loop to track which letter to look at in each chunk
+  for (let i = 0; i <= chunks.length; i++) {
+    // loop to track which chunk to look at
     for (let j = 0; j < chunks.length; j++) {
       if (chunks[j][i] !== undefined) {
         encrypted += chunks[j][i];
