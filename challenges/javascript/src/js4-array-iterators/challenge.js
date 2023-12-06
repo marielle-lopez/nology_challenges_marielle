@@ -22,7 +22,7 @@
  */
 
 export const removeFalseValues = (booleanArr) => {
-  return;
+  return booleanArr.filter((item) => item == true);
 };
 
 /**
@@ -34,7 +34,15 @@ export const removeFalseValues = (booleanArr) => {
  */
 
 export const createPercentageList = (numbersArr) => {
-  return;
+  let percentages = [];
+
+  numbersArr.filter((item) =>
+    item >= 0 && item <= 1
+      ? percentages.push(`${(item * 100).toFixed(0)}%`)
+      : ""
+  );
+
+  return percentages;
 };
 
 /**
@@ -47,7 +55,7 @@ export const createPercentageList = (numbersArr) => {
  */
 
 export const createListOfPoessessions = (possessionsArr, name) => {
-  return;
+  return possessionsArr.map((possession) => `${name} ${possession}`);
 };
 
 /**
@@ -72,7 +80,7 @@ export const createListOfPoessessions = (possessionsArr, name) => {
  */
 
 export const convertStringToNumbersArray = (numberString) => {
-  return;
+  return numberString.split("+").map((item) => Number(item));
 };
 
 /**
@@ -84,7 +92,16 @@ export const convertStringToNumbersArray = (numberString) => {
  */
 
 export const createOddEvenArray = (numberString) => {
-  return;
+  let oddEvenArray = [];
+
+  numberString
+    .split("+")
+    .map((item) => Number(item))
+    .map((number) =>
+      number % 2 === 0 ? oddEvenArray.push("even") : oddEvenArray.push("odd")
+    );
+
+  return oddEvenArray;
 };
 
 /**
@@ -97,7 +114,7 @@ export const createOddEvenArray = (numberString) => {
  */
 
 export const filterBooksBySearch = (booksArr, searchTerm) => {
-  return;
+  return booksArr.filter((book) => book.includes(searchTerm));
 };
 
 /**
@@ -117,12 +134,12 @@ export const filterBooksBySearch = (booksArr, searchTerm) => {
  */
 
 export const formatStringArray = (stringArr) => {
-  const cleanedArr = stringArr.forEach((string) => {
-    const cleanStr = string.trim().toLowerCase();
-    return cleanStr;
-  });
+  const cleanedArr = [];
 
-  // console.log(???)
+  stringArr.forEach((string) => {
+    const cleanStr = string.trim().toLowerCase();
+    return cleanedArr.push(cleanStr);
+  });
 
   const joinedString = cleanedArr.join("+");
 
@@ -143,7 +160,20 @@ export const formatStringArray = (stringArr) => {
  */
 
 export const formatString = (string) => {
-  return;
+  let formattedString = string.replace(/[^a-zA-Z]/g, "").split("");
+  let result = [];
+
+  for (let i = 0; i < formattedString.length; i++) {
+    let character = formattedString[i];
+
+    if (i % 2 === 0) {
+      result.push(character.toUpperCase());
+    } else {
+      result.push(character.toLowerCase());
+    }
+  }
+
+  return result;
 };
 
 /**
@@ -158,7 +188,7 @@ export const formatString = (string) => {
  * If we were given [-1, "disco", "3", 5, "15", 2, 0]
  * We would be left with this ["3", 5, "15", 2]
  *
- * It then needs to create a NEW array from this clean array based on the conditons below:
+ * It then needs to create a NEW array from this clean array based on the conditions below:
  *
  * For multiples of three replace the number with "Fizz".
  * For multiples of five replace the number with "Buzz".
@@ -170,5 +200,23 @@ export const formatString = (string) => {
  */
 
 export const fizzBuzz = (mixedArray) => {
-  return;
+  let cleanedArray = mixedArray
+    .filter((item) => !isNaN(item))
+    .filter((item) => item > 0);
+
+  let result = [];
+
+  cleanedArray.map((item) => {
+    if (Number(item) % 3 === 0 && Number(item) % 5 === 0) {
+      result.push("FizzBuzz");
+    } else if (Number(item) % 3 === 0) {
+      result.push("Fizz");
+    } else if (Number(item) % 5 === 0) {
+      result.push("Buzz");
+    } else {
+      result.push(`${item}`);
+    }
+  });
+
+  return result;
 };
