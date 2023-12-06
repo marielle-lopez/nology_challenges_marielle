@@ -17,7 +17,7 @@ console.log(petsCopy);
 
 // -> 4. ['Bug', 'Sebastian', 'Pixie]
 for (let i = 0; i < petsCopy.length; i++) {
-  petsCopy[i] = petsCopy[i].charAt(0).toUpperCase() + petsCopy[i].substring(1);
+  petsCopy[i] = petsCopy[i][0].toUpperCase() + petsCopy[i].substring(1);
 }
 console.log(petsCopy);
 
