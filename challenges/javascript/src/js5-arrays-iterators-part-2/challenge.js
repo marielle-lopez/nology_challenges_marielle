@@ -22,7 +22,10 @@
  */
 
 export const totalScoresArr = (scoresArr) => {
-  return;
+  return scoresArr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 };
 
 /**
@@ -35,7 +38,13 @@ export const totalScoresArr = (scoresArr) => {
  */
 
 export const reverseString = (toReverse) => {
-  return;
+  return toReverse
+    .split("")
+    .reduce((acc, char) => {
+      acc.unshift(char);
+      return acc;
+    }, [])
+    .join("");
 };
 
 /**
@@ -47,8 +56,8 @@ export const reverseString = (toReverse) => {
  * @return {string[]} ["b", "b", "b", "g", "l", "n", "x", "x"]
  */
 
-export const sortCharactersAlphabetically = (charcterArr) => {
-  return;
+export const sortCharactersAlphabetically = (characterArr) => {
+  return characterArr.map((character) => character.toLowerCase()).sort();
 };
 
 /**
@@ -63,7 +72,7 @@ export const sortCharactersAlphabetically = (charcterArr) => {
  */
 
 export const sortNumbersHighToLow = (numberArr) => {
-  return;
+  return numberArr.sort((a, b) => a - b).reverse();
 };
 
 /**
@@ -94,7 +103,11 @@ export const checkItemInstock = (toCheck) => {
     "blueberry",
     "melon",
   ];
-  return;
+
+  let itemIndex = stockList.findIndex((item) => item === toCheck);
+  return itemIndex >= 0
+    ? `${toCheck} is instock, it is on aisle ${itemIndex}.`
+    : `Sorry ${toCheck} is not instock.`;
 };
 
 /**
@@ -108,7 +121,9 @@ export const checkItemInstock = (toCheck) => {
  */
 
 export const checkPrimaryColours = (coloursArr) => {
-  return;
+  return coloursArr.every((colour) =>
+    ["red", "blue", "yellow"].includes(colour)
+  );
 };
 
 /**
@@ -125,7 +140,7 @@ export const checkPrimaryColours = (coloursArr) => {
  */
 
 export const checkStringPalindrome = (stringOne) => {
-  return;
+  return stringOne === stringOne.split("").reverse().join("");
 };
 
 /**
@@ -139,7 +154,15 @@ export const checkStringPalindrome = (stringOne) => {
  */
 
 export const totalNestedScoresArr = (scoresArr) => {
-  return;
+  let result = [];
+
+  scoresArr.map((nestedArray) => {
+    result.push(
+      nestedArray.reduce((accumulator, number) => (accumulator += number), 0)
+    );
+  });
+
+  return result;
 };
 
 /**
@@ -172,5 +195,27 @@ export const totalNestedScoresArr = (scoresArr) => {
  */
 
 export const encryptString = (toEncrypt) => {
-  return;
+  if (toEncrypt.length <= 3) {
+    return toEncrypt;
+  }
+
+  return toEncrypt
+    .split("")
+    .reduce(
+      (acc, curr, i) => {
+        if (i % 3 === 0) {
+          acc[0].push(curr);
+          return acc;
+        } else if (i % 3 === 1) {
+          acc[1].push(curr);
+          return acc;
+        } else {
+          acc[2].push(curr);
+          return acc;
+        }
+      },
+      [[], [], []]
+    )
+    .flat()
+    .join("");
 };
