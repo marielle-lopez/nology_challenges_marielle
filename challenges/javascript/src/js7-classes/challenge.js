@@ -27,7 +27,10 @@ export class Coordinate {
    * @param {number} xCoord - 22.
    * @param {number} yCoord - 20.
    */
-  constructor(xCoord, yCoord) {}
+  constructor(xCoord, yCoord) {
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+  }
 }
 
 /**
@@ -48,14 +51,16 @@ export class Alert {
    * Create an alert.
    * @param {string} message - "Are sure you want to proceed?"
    */
-  constructor() {}
+  constructor(message) {
+    this.message = message;
+  }
 
   /**
    * Returns a string with "!!!! " + " !!!!" added to the start and end of the message key.
    * @return {string} "!!!! Are sure you want to proceed? !!!!"
    */
   printMessage() {
-    return;
+    return `!!!! ${this.message} !!!!`;
   }
 }
 
@@ -83,17 +88,23 @@ export class Loader {
    * Create a loader.
    * @param {{innerHTML:string}} htmlRef - {innerHTML:""}
    */
-  constructor() {}
+  constructor(htmlRef) {
+    this.htmlRef = htmlRef;
+  }
 
   /**
    * Updates the htmlRef.innerHTML to display the loader's html.
    */
-  displayLoader() {}
+  displayLoader() {
+    this.htmlRef.innerHTML = '<div class="loader"></div>';
+  }
 
   /**
    * Updates the htmlRef.innerHTML to remove the loader's html.
    */
-  removeLoader() {}
+  removeLoader() {
+    this.htmlRef.innerHTML = "";
+  }
 }
 
 /**
@@ -125,21 +136,33 @@ export class Counter {
    * Create an counter.
    * @param {number} count - 50
    */
-  constructor() {}
+  constructor(count = 0) {
+    this.count = count;
+  }
 
   /**
    * A method that increments count by 1.
    * @return {number} 51
    */
 
-  // WRITE INCREMENT FUNCTION HERE
+  increment() {
+    this.count += 1;
+
+    return this.count;
+  }
 
   /**
    * A method that decrements count by 1 but will not go below 0.
    * @return {number} 49
    */
 
-  // WRITE DECREMENT FUNCTION HERE
+  decrement() {
+    if (this.count > 0) {
+      this.count -= 1;
+
+      return this.count;
+    }
+  }
 }
 
 /**
@@ -167,14 +190,21 @@ export class Engine {
   /**
    * Create an engine.
    */
-  constructor() {}
+  constructor() {
+    this.engineIsRunning = false;
+  }
 
   /**
    * Updates engineIsRunning to true and returns a conditonal string based if the engine is already running.
    * @return {string} "Engine has started running" or "Engine is already running"
    */
   startEngine() {
-    return;
+    if (this.engineIsRunning) {
+      return "Engine is already running";
+    } else {
+      this.engineIsRunning = true;
+      return "Engine has started running";
+    }
   }
 
   /**
@@ -182,7 +212,12 @@ export class Engine {
    * @return {string} "Engine has stopped running" or "Engine has already stopped running"
    */
   stopEngine() {
-    return;
+    if (this.engineIsRunning) {
+      this.engineIsRunning = false;
+      return "Engine has stopped running";
+    } else {
+      return "Engine has already stopped running";
+    }
   }
 }
 
@@ -224,19 +259,28 @@ export class Modal {
    * @param {string} title - "Error"
    * @param {string} message - "We are currently unable to provide this service"
    */
-  constructor() {}
+  constructor(htmlRef, title, message) {
+    this.htmlRef = htmlRef;
+    this.title = title;
+    this.message = message;
+  }
 
   /**
    * A method that renders the html for a modal.
    */
 
-  // WRITE RENDER HTML METHOD HERE
+  renderHTML() {
+    this.htmlRef.innerHTML = `<div class="modal">`;
+    this.htmlRef.innerHTML += `<h2 class="modal--title">${this.title}</h2>`;
+    this.htmlRef.innerHTML += `<p class="modal--message">${this.message}</p>`;
+    this.htmlRef.innerHTML += `</div>`;
+  }
 
   /**
    * A method that toggles a CSS class to either show or hide the modal.
    */
 
-  // WRITE DISPLAY MODAL METHOD HERE
+  displayModal() {}
 }
 
 /**

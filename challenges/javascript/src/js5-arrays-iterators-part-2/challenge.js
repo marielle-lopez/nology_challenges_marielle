@@ -72,7 +72,7 @@ export const sortCharactersAlphabetically = (characterArr) => {
  */
 
 export const sortNumbersHighToLow = (numberArr) => {
-  return numberArr.sort((a, b) => a - b).reverse();
+  return numberArr.sort((a, b) => b - a);
 };
 
 /**
@@ -154,15 +154,11 @@ export const checkStringPalindrome = (stringOne) => {
  */
 
 export const totalNestedScoresArr = (scoresArr) => {
-  let result = [];
-
-  scoresArr.map((nestedArray) => {
-    result.push(
-      nestedArray.reduce((accumulator, number) => (accumulator += number), 0)
-    );
+  return scoresArr.map((nestedArray) => {
+    nestedArray.reduce((accumulator, number) => (accumulator += number), 0);
   });
 
-  return result;
+  // return scoresArr.map(totalScoresArr);
 };
 
 /**
@@ -203,16 +199,8 @@ export const encryptString = (toEncrypt) => {
     .split("")
     .reduce(
       (acc, curr, i) => {
-        if (i % 3 === 0) {
-          acc[0].push(curr);
-          return acc;
-        } else if (i % 3 === 1) {
-          acc[1].push(curr);
-          return acc;
-        } else {
-          acc[2].push(curr);
-          return acc;
-        }
+        acc[i % 3].push(curr);
+        return acc;
       },
       [[], [], []]
     )
