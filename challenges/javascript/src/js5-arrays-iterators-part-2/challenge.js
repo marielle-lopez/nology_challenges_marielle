@@ -154,11 +154,17 @@ export const checkStringPalindrome = (stringOne) => {
  */
 
 export const totalNestedScoresArr = (scoresArr) => {
-  return scoresArr.map((nestedArray) => {
-    nestedArray.reduce((accumulator, number) => (accumulator += number), 0);
+  let result = [];
+
+  scoresArr.map((nestedArray) => {
+    result.push(
+      nestedArray.reduce((accumulator, number) => accumulator + number, 0)
+    );
   });
 
   // return scoresArr.map(totalScoresArr);
+
+  return result;
 };
 
 /**
