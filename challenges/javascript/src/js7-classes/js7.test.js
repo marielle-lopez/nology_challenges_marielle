@@ -299,7 +299,7 @@ describe("Testing Engine class", () => {
   });
 });
 
-xdescribe("Testing Modal class", () => {
+describe("Testing Modal class", () => {
   let modal;
 
   let htmlReference;
@@ -392,7 +392,7 @@ xdescribe("Testing Modal class", () => {
   });
 });
 
-xdescribe("Testing BookShelf class", () => {
+describe("Testing BookShelf class", () => {
   let bookShelf;
   const bookArray = [
     "JavaScript: The Definitive Guide",
@@ -478,7 +478,7 @@ xdescribe("Testing BookShelf class", () => {
   });
 });
 
-xdescribe("Testing BankAccount class", () => {
+describe("Testing BankAccount class", () => {
   let bankAccount;
 
   beforeEach(() => {

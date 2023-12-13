@@ -269,18 +269,20 @@ export class Modal {
    * A method that renders the html for a modal.
    */
 
-  renderHTML() {
-    this.htmlRef.innerHTML = `<div class="modal">`;
-    this.htmlRef.innerHTML += `<h2 class="modal--title">${this.title}</h2>`;
-    this.htmlRef.innerHTML += `<p class="modal--message">${this.message}</p>`;
-    this.htmlRef.innerHTML += `</div>`;
+  renderHtml() {
+    this.htmlRef.innerHTML = `\n    <div class="modal">\n`;
+    this.htmlRef.innerHTML += `      <h2 class="modal--title">${this.title}</h2>\n`;
+    this.htmlRef.innerHTML += `      <p class="modal--message">${this.message}</p>\n`;
+    this.htmlRef.innerHTML += `    </div>\n    `;
   }
 
   /**
    * A method that toggles a CSS class to either show or hide the modal.
    */
 
-  displayModal() {}
+  displayModal() {
+    this.htmlRef.classList.toggle("hide");
+  }
 }
 
 /**
@@ -347,14 +349,18 @@ export class BookShelf {
    * @return {string} "Learning JavaScript Design Patterns"
    */
 
-  // WRITE LATEST BOOK GETTER HERE
+  get latestBook() {
+    return this._booksOnShelf[this._booksOnShelf.length - 1];
+  }
 
   /**
    * A setter that adds a new book to the list of books.
    * @param {string} "Eloquent JavaScript"
    */
 
-  // WRITE ADD BOOK TO SHELF SETTER HERE
+  set addBookToShelf(newBook) {
+    this._booksOnShelf.push(newBook);
+  }
 }
 
 /**
@@ -366,7 +372,7 @@ export class BookShelf {
  *
  * You will need to write the constructor.
  * It needs to accept three parameters called name, email and balance.
- * By defualt the balance will be set to 0 unless a balance is given.
+ * By default the balance will be set to 0 unless a balance is given.
  * The balance key is private so will need to be prefixed with a "_"
  * The keys will need to be called name, email and _balance.
  *
@@ -378,7 +384,7 @@ export class BookShelf {
  * You will need to write two methods.
  *
  * The first needs to be called deposit().
- * It will need to accempt a parameter which is the amount to deposit.
+ * It will need to accept a parameter which is the amount to deposit.
  * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
  * You will have to handle this in the function.
  * You will need to handle negative numbers.
@@ -407,35 +413,59 @@ export class BankAccount {
    * @param {string} email
    * @param {number} balance
    */
-  constructor() {}
+  constructor(name, email, balance = 0) {
+    this.name = name;
+    this.email = email;
+    this._balance = balance;
+  }
 
   /**
    * A getter that returns the current balance.
    * @return {number} 20
    */
 
-  // WRITE BALANCE GETTER HERE
+  get balance() {
+    return this._balance;
+  }
 
   /**
    * A method that deposits to the balance.
    * It checks if the input is correct.
-   * If if it is incorrect it returns "Invalid input, unable to deposit".
+   * If it is incorrect it returns "Invalid input, unable to deposit".
    * If it is correct it adds the input to the balance and returns the updated balance.
    * @param {(number|string)} toDeposit 20 or "Bad Input"
    * @return {(number|string)} 40 or "Invalid input, unable to deposit"
    */
 
-  // WRITE DEPOSIT METHOD HERE
+  deposit(toDeposit) {
+    if (isNaN(Number(toDeposit)) || toDeposit < 0) {
+      return "Invalid input, unable to deposit";
+    }
+
+    this._balance += Number(toDeposit);
+    return this._balance;
+  }
 
   /**
    * A method that withdraws from the balance.
    * It checks if the input is correct.
-   * If if it is incorrect it returns "Invalid input, unable to deposit".
-   * If if it is correct but more then the balance it returns "Insufficient funds, unable to withdraw".
+   * If it is incorrect it returns "Invalid input, unable to deposit".
+   * If it is correct but more then the balance it returns "Insufficient funds, unable to withdraw".
    * If it is correct it subtracts the input to the balance and returns the updated balance.
    * @param {(number|string)} toWithdraw 20 or "Bad Input" or 1000
    * @return {(number|string)} 40 or "Invalid input, unable to deposit" or "Insufficient funds, unable to withdraw"
    */
 
-  // WRITE WITH DRAW METHOD HERE
+  withdraw(toWithdraw) {
+    if (isNaN(Number(toWithdraw)) || toWithdraw < 0) {
+      return "Invalid input, unable to withdraw";
+    }
+
+    if (this._balance - Number(toWithdraw) < 0) {
+      return "Insufficient funds, unable to withdraw";
+    }
+
+    this._balance -= Number(toWithdraw);
+    return this._balance;
+  }
 }
