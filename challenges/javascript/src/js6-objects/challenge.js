@@ -97,6 +97,9 @@ export const splitFullNameToFirstAndLast = (customer) => {
   customer["lastName"] = splitFullName[1];
 
   return customer;
+
+  // const [firstName, lastName] = customer.fullName.split(" ");
+  // return { firstName, lastName, ...customer };
 };
 
 /**
