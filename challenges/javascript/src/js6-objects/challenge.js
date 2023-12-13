@@ -59,6 +59,8 @@ export const makeSpaceship = (
     engineType: engineType,
     canTravelSolarSystems: canTravelSolarSystems,
   };
+
+  // return { name, noOfSeats, engineType, canTravelSolarSystems };
 };
 
 /* Intermediate Challenges */
@@ -74,6 +76,12 @@ export const setUserName = (user, username) => {
   user["username"] === undefined ? (user["username"] = username) : "";
 
   return user;
+
+  // if (!(username in user)) {
+  //   user["username"] = username;
+  // }
+
+  // return user;
 };
 
 /**
