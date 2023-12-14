@@ -36,11 +36,13 @@ console.log(movies.filter((movie) => movie.release >= 2000));
 
 // Get all movies where director begins with 'T'
 console.log(movies.filter((movie) => movie.director.charAt(0) === "T"));
+// can also use startsWith method
 
 // Get the first movie in the list where the name contains 'the'
 console.log(
   movies.filter((movie) => movie.name.split(" ")[0].toLowerCase() === "the")
 );
+// movies.filter((movie) => movie.name.indexOf("The") !== -1);
 
 // Get the total runtime of all movies in seconds
 console.log(
