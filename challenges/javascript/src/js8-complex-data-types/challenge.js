@@ -27,7 +27,7 @@ export const getEmployeeQuotes = (employeeArr) => {
  * @returns {{name: string, quote: string, yearsEmployed: number, isManagement: boolean}[]} An array containing only managers
  */
 export const getTheManagers = (employeeArr) => {
-  return employeeArr.filter((employee) => employee.isManagement === true);
+  return employeeArr.filter((employee) => employee.isManagement);
 };
 
 /**
