@@ -130,17 +130,30 @@ export const getImportantKeys = (mealsArr) => {
  * @returns {{id: number, name: string, ingredients: string[], country: string, isVegetarian: boolean, timeToCook: number}[]}
  */
 export const setImportantKeys = (mealsArr) => {
+  // return mealsArr.map((meal) => {
+  //   let updatedMeal = { ...meal };
+
+  //   updatedMeal.hasOwnProperty("isVegetarian")
+  //     ? updatedMeal
+  //     : (updatedMeal["isVegetarian"] = false);
+  //   updatedMeal.hasOwnProperty("timeToCook")
+  //     ? updatedMeal
+  //     : (updatedMeal["timeToCook"] = 15);
+
+  //   return updatedMeal;
+  // });
+
+  // return mealsArr.map((meal) => {
+  //   const { isVegetarian = false, timeToCook = 15 } = meal;
+  //   return { ...meal, isVegetarian, timeToCook };
+  // });
+
   return mealsArr.map((meal) => {
-    let updatedMeal = { ...meal };
-
-    updatedMeal.hasOwnProperty("isVegetarian")
-      ? updatedMeal
-      : (updatedMeal["isVegetarian"] = false);
-    updatedMeal.hasOwnProperty("timeToCook")
-      ? updatedMeal
-      : (updatedMeal["timeToCook"] = 15);
-
-    return updatedMeal;
+    return {
+      ...meal,
+      isVegetarian: meal.isVegetarian || false,
+      timeToCook: meal.timeToCook || 15,
+    };
   });
 };
 
