@@ -204,4 +204,26 @@ export const cleanCocktailResponseData = (cocktailData) => {
 
     return cocktail;
   });
+
+  // return cocktailData.map((data) => {
+  //   const {
+  //     idDrink: id,
+  //     strDrink: drink,
+  //     strCategory: category,
+  //     strAlcoholic: alcoholic,
+  //     strInstructions: instructions,
+  //     ...rest
+  //   } = data;
+
+  //   const ingredients = Object.values(rest).filter((value) => value !== null);
+
+  //   return {
+  //     id,
+  //     drink,
+  //     category,
+  //     alcoholic,
+  //     instructions,
+  //     ingredients,
+  //   };
+  // });
 };
