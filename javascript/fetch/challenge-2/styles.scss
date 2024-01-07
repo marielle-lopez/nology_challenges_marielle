@@ -1,0 +1,46 @@
+.body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+.pokemon-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 150px;
+    height: 210px;
+    padding: 5px;
+
+    border: 6px solid rgb(255, 220, 64);
+    border-radius: 10px;
+    background-color: rgb(252, 236, 166);
+
+    &__title {
+      min-width: 100%;
+      margin: 0;
+
+      font-weight: bold;
+    }
+
+    &__image {
+      min-width: 100%;
+      height: 75px;
+      object-fit: contain;
+
+      border: 2px solid rgb(255, 220, 64);
+    }
+
+    &__types {
+      min-width: 100%;
+      margin: 0;
+
+      font-size: 9px;
+    }
+  }
+}
