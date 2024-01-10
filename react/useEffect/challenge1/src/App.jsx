@@ -11,15 +11,12 @@ function App() {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
-    if (searchTerm === null) {
+    if (searchTerm === null || searchTerm < 1) {
       return;
     }
 
-    console.log(searchTerm);
-
     fetchUsersData(searchTerm).then((response) => {
       setUsersData(response);
-      console.log(response);
     });
   }, [searchTerm]);
 
@@ -27,7 +24,9 @@ function App() {
     <>
       <h1>Get Users</h1>
       <SearchBar setSearchTerm={setSearchTerm} />
-      {searchTerm && <SearchResultsList searchTerm={searchTerm} />}
+      {searchTerm && (
+        <SearchResultsList searchTerm={searchTerm} usersData={usersData} />
+      )}
     </>
   );
 }
