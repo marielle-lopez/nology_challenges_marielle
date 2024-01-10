@@ -15,6 +15,7 @@ const SearchBar = ({ setSearchTerm }) => {
       <input
         className={styles.input}
         type="number"
+        min="1"
         placeholder="Enter a number"
         onChange={(e) => {
           setInputValue(e.target.value);

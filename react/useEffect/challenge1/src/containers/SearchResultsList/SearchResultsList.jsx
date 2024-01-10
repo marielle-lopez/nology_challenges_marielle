@@ -7,7 +7,7 @@ const SearchResultsList = ({ searchTerm, usersData }) => {
     <div className={styles.wrapper}>
       {searchTerm && (
         <p className={styles.feedback_text}>
-          You searched for {searchTerm} user(s)
+          You searched for {searchTerm} user{searchTerm == 1 ? "" : "s"}
         </p>
       )}
       <div className={styles.results_wrapper}>
