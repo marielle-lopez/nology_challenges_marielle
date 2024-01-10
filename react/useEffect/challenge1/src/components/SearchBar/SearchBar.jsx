@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from "./SearchBar.module.scss";
+
 const SearchBar = ({ setSearchTerm }) => {
   const [inputValue, setInputValue] = useState(null);
 
@@ -9,14 +11,16 @@ const SearchBar = ({ setSearchTerm }) => {
   };
 
   return (
-    <form>
+    <form className={styles.wrapper}>
       <input
+        className={styles.input}
         type="number"
+        placeholder="Enter a number"
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button className={styles.button} type="submit" onClick={handleSubmit}>
         Search
       </button>
     </form>

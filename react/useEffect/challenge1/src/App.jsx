@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.scss";
+import styles from "./App.module.scss";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResultsList from "./containers/SearchResultsList/SearchResultsList";
@@ -21,13 +21,13 @@ function App() {
   }, [searchTerm]);
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <h1>Get Users</h1>
       <SearchBar setSearchTerm={setSearchTerm} />
       {searchTerm && (
         <SearchResultsList searchTerm={searchTerm} usersData={usersData} />
       )}
-    </>
+    </div>
   );
 }
 

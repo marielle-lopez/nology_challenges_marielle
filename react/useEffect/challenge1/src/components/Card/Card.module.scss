@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+  width: 200px;
+  height: 120px;
+  padding: 15px;
+
+  background-color: #2e2e2e;
+  border-radius: 20px;
+}
+
+.heading {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.text {
+  &_location,
+  &_age {
+    font-size: small;
+  }
+
+  &_location {
+    margin-bottom: 5px;
+  }
+
+  &_age {
+    color: #5c5c5c;
+  }
+}
+
+.image {
+  height: 50px;
+
+  object-fit: contain;
+  border-radius: 10px;
+}
