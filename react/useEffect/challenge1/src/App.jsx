@@ -3,6 +3,8 @@ import styles from "./App.module.scss";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResultsList from "./containers/SearchResultsList/SearchResultsList";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import { fetchUsersData } from "./data/getUsersData";
 
@@ -29,7 +31,9 @@ function App() {
       <h1>Get Users</h1>
       <SearchBar setSearchTerm={setSearchTerm} />
       {loading ? (
-        <p>Loading...</p>
+        <Box sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
       ) : (
         <SearchResultsList searchTerm={searchTerm} usersData={usersData} />
       )}
