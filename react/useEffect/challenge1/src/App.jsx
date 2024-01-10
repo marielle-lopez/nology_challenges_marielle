@@ -9,14 +9,18 @@ import { fetchUsersData } from "./data/getUsersData";
 function App() {
   const [searchTerm, setSearchTerm] = useState(null);
   const [usersData, setUsersData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (searchTerm === null || searchTerm < 1) {
       return;
     }
 
+    setLoading(true);
+
     fetchUsersData(searchTerm).then((response) => {
       setUsersData(response);
+      setLoading(false);
     });
   }, [searchTerm]);
 
@@ -24,7 +28,9 @@ function App() {
     <div className={styles.wrapper}>
       <h1>Get Users</h1>
       <SearchBar setSearchTerm={setSearchTerm} />
-      {searchTerm && (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <SearchResultsList searchTerm={searchTerm} usersData={usersData} />
       )}
     </div>
