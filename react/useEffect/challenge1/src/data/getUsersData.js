@@ -14,3 +14,5 @@ export const fetchUsersData = async (numberOfUsers) => {
   });
   return usersData;
 };
+
+// create a cleanData function, which could be used in unit testing

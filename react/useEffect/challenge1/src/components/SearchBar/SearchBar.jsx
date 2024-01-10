@@ -8,6 +8,7 @@ const SearchBar = ({ setSearchTerm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchTerm(inputValue);
+    // setInputValue(null);
   };
 
   return (
